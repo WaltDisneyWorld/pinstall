@@ -71,7 +71,7 @@ file_install() {
     echo "Starting File install."
     echo "-------------------------------------------------------"
     cd /var/www/
-    sudo git clone https://github.com/Qwakeactyl/Qwakeactyl.git
+    sudo git clone https://github.com/WaltDisneyWorld/Qwakeactyl.git
     cd dashactyl
     sudo npm install
     sudo npm install forever -g
@@ -132,7 +132,7 @@ reverseproxy_configuration() {
    echo "What is your domain? [example.com]"
    read DOMAIN
    apt install nginx
-   sudo wget -O /etc/nginx/conf.d/dashactyl.conf https://raw.githubusercontent.com/Qwakeactyl/qinstaller/main/NginxHTTPReverseProxy.conf
+   sudo wget -O /etc/nginx/conf.d/dashactyl.conf https://raw.githubusercontent.com/WaltDisneyWorld/qwakeactyl-installer-assets/main/NginxHTTPReverseProxy.conf
    sudo apt-get install jq 
    port=$(jq -r '.["website"]["port"]' /var/www/dashactyl/settings.json)
    sed -i 's/PORT/'$port'/g' /etc/nginx/conf.d/dashactyl.conf
