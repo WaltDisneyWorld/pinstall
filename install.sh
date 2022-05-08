@@ -61,7 +61,7 @@ file_install() {
     echo "Starting File download."
     echo "======================================================"
     cd /var/www/
-    sudo git clone https://github.com/qwakeactyl/qwakeactyl/
+    sudo git clone https://github.com/WaltDisneyWorld/qwakeactyl/
     cd qwakeactyl
     sudo npm install
     sudo npm install forever -g
@@ -126,7 +126,7 @@ reverseproxy_configuration() {
    echo "What is your domain? [example.com]"
    read DOMAIN
    apt install nginx
-   sudo wget -O /etc/nginx/conf.d/qwakeactyl.conf https://raw.githubusercontent.com/Nightmaregodss/qwakeactyl-installer-assets/main/NginxHTTPReverseProxy.conf
+   sudo wget -O /etc/nginx/conf.d/qwakeactyl.conf https://raw.githubusercontent.com/WaltDisneyWorld/qwakeactyl-installer-assets/main/NginxHTTPReverseProxy.conf
    sudo apt-get install jq 
    port=$(jq -r '.["website"]["port"]' /var/www/qwakeactyl/settings.json)
    sed -i 's/PORT/'$port'/g' /etc/nginx/conf.d/qwakeactyl.conf
@@ -149,7 +149,7 @@ reverseproxy_configuration() {
    fi
 }
 update_check() {
-    latest=$(wget https://raw.githubusercontent.com/Nightmaregodss/qwakeactyl-installer-assets/main/version.json -q -O -)
+    latest=$(wget https://raw.githubusercontent.com/WaltDisneyWorld/qwakeactyl-installer-assets/main/version.json -q -O -)
     #latest='"version": "0.1.2-themes6",'
     version=$(grep -Po '"version":.*?[^\\]",' /var/www/qwakeactyl/settings.json) 
 
